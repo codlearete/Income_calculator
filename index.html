@@ -5,42 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-    <script>
-    function CalAmt(v)
-    {
-        var index = $(v).parent().parent().index();
-
-        var rate = document.getElementsByName("rate")[index].value;
-        var amt = rate;
-        document.getElementsByName("amt")[index].value = amt;
-
-        GetTotal();
-
-    }
-    function BtnAdd()
-    {
-        var v = $("#TRow").clone().appendTo("#TBody");
-        $(v).find("input").val('');
-
-    }
-    function GetTotal()
-    {
-        var amount = document.getElementsByName("amt");
-        var sum = 0;
-
-        for(let index = 0;index<amount.length;index++)
-        {
-            var amtin = amount[index].value;
-            sum = +(sum) + +(amtin);
-        }
-
-        document.getElementById("Ftotal").value = sum;
-    }      
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -63,30 +30,50 @@
                         <th scope="col" >Amount</th>
                         <!-- <th scope="col" ></th> -->
                         <th scope="col" class="NoPrint">
-                            <button type="button" class="btn btn-success" onclick="BtnAdd()" >+</button>
+                            <button type="button" class="btn btn-success" onclick="BtnAdd()" >Add</button>
                         </th>
                       </tr>
                     </thead>
                     <tbody id="TBody">
-                      <tr id="TRow">
+                      <tr id="TRow" class="d-none">
                         <th scope="row">1</th>
                         <!-- <td><input type="date" class="form-control text-end" name="date"  ></td> -->
                         <td>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Credit/Debit
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                              </div>
+                          <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Credit</a></li>
+                            <li><a class="dropdown-item" href="#">Debit</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                            </ul>
+                          </div>
                         </div>
                         </td>
                         <td><input type="number" class="form-control text-end" name="rate" onchange="CalAmt(this);"  ></td>
                         <td><input type="number" class="form-control text-end" name="amt" disabled=""></td>
-                        <td class="NoPrint"><button type="button" class="btn btn-primary" >Done</button></td>
+                        <td class="NoPrint"><button type="button" class="btn btn-danger" onclick="BtnDel(this);" >Delete</button></td>
+                      </tr>
+                      <tr id="TRow" >
+                        <th scope="row">1</th>
+                        <!-- <td><input type="date" class="form-control text-end" name="date"  ></td> -->
+                        <td>
+                          <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Credit</a></li>
+                            <li><a class="dropdown-item" href="#">Debit</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                            </ul>
+                          </div>
+                        </div>
+                        </td>
+                        <td><input type="number" class="form-control text-end" name="rate" onchange="CalAmt(this);"  ></td>
+                        <td><input type="number" class="form-control text-end" name="amt" disabled=""></td>
+                        <td class="NoPrint"><button type="button" class="btn btn-danger" onclick="BtnDel(this);" >Delete</button></td>
                       </tr>
                       
                     </tbody>
