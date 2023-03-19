@@ -13,7 +13,13 @@ function BtnAdd()
 {
     var v = $("#TRow").clone().appendTo("#TBody");
     $(v).find("input").val('');
+    $(v).removeClass("d-none")
 
+}
+function BtnDel(v)
+{
+    $(v).parent().parent().remove();
+    GetTotal();
 }
 function GetTotal()
 {
